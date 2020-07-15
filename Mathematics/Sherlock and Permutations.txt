@@ -1,0 +1,42 @@
+static long MOD = 1000000007;
+    
+    static long factorial_of(int n) 
+    { 
+        if (n == 0) 
+            return 1; 
+  
+        return (n * factorial_of(n - 1)) % MOD; 
+    }
+    static long binary_expo_dp(long x, long n){
+        if(n == 0)
+            return 1;
+        else if(n == 1)
+            return x % MOD;
+        else{
+            // storing x^n/2 in temp and using in even and odd condition
+            // this reduces of calculating x^n/2 twice.
+            // reduces complexity by o(log n)
+            long temp = binary_expo_dp(x, n/2);
+            temp = (temp * temp) % MOD;
+
+            // if n is odd
+            if(n % 2 != 0){
+                // just use formula --> (a*b) mod p = ((a mod p) * (b mod p)) mod p
+                // note : temp is not moded coz, it is already moded above
+                return ((x % MOD) * temp) % MOD;
+            }else{
+                return temp;
+            }
+        }
+    }
+    // Complete the solve function below.
+    static int solve(int n, int m) {
+        
+        long nr = factorial_of(n+m-1);
+        long dr = factorial_of(m-1) * factorial_of(n);
+
+        long res = ((nr % MOD) * (binary_expo_dp(dr, MOD-2) % MOD)) % MOD;
+
+        return (int) res;
+      
+    }
