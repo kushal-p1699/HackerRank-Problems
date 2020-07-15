@@ -1,0 +1,20 @@
+    static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+        int aCount = 0, bCount = 0;
+        for(int x : apples){
+            x = x + a;
+            if(x >= s && x <= t){
+                aCount++;
+            }
+        }
+
+        for(int x : oranges){
+            x = x + b;
+            if(x >= s && x <= t){
+                bCount++;
+            }
+        }
+
+        System.out.println(aCount);
+        System.out.println(bCount);
+
+    }

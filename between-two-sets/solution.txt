@@ -1,0 +1,113 @@
+
+package betweentwosets;
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+import java.util.Vector; 
+  
+
+class BetweenTwoSets { 
+ 
+    static int LCM(int[] arr, int n) { 
+        int max_num = 0; 
+        for (int i = 0; i < n; i++) { 
+            if (max_num < arr[i]) { 
+                max_num = arr[i]; 
+            } 
+        }
+        int res= 1; 
+        int x = 2; // Current factor.  
+        while (x <= max_num) { 
+           
+            Vector<Integer> indexes = new Vector<>(); 
+            for (int j = 0; j < n; j++) { 
+                if (arr[j] % x == 0) { 
+                    indexes.add(indexes.size(), j); 
+                } 
+            } 
+            if (indexes.size() >= 2) {  
+                for (int j = 0; j < indexes.size(); j++) { 
+                    arr[indexes.get(j)] = arr[indexes.get(j)] / x; 
+                } 
+  
+                res = res * x; 
+            } else { 
+                x++; 
+            } 
+        }
+        for (int i = 0; i < n; i++) { 
+            res = res * arr[i]; 
+        } 
+  
+        return res; 
+    } 
+    
+     static int gcd(int a, int b) 
+    { 
+        if (a == 0) 
+            return b; 
+        return gcd(b % a, a); 
+    } 
+     
+     
+     static int findGCD(int[] arr, int n) 
+    { 
+        int result = arr[0]; 
+        for (int i = 1; i < n; i++){ 
+            result = gcd(arr[i], result); 
+  
+            if(result == 1) 
+            { 
+               return 1; 
+            } 
+        } 
+  
+        return result; 
+    } 
+    
+    
+    public static void main(String[] args) { 
+        List<Integer> arr = new ArrayList<Integer>(); 
+        List<Integer> arr2 = new ArrayList<Integer>();
+//        arr.add(100);arr.add(99);arr.add(98);arr.add(97);arr.add(96);
+//        arr.add(95);arr.add(94);arr.add(93);arr.add(92);arr.add(91);
+          arr.add(2);arr.add(3);arr.add(6);
+        
+//        arr2.add(1);arr2.add(2);arr2.add(3);arr2.add(4);arr2.add(5);arr2.add(6);
+//        arr2.add(7);arr2.add(8);arr2.add(9);arr2.add(10);
+
+        arr2.add(42);arr2.add(84);
+        Object[] a = arr.toArray();
+        Object[] b = arr2.toArray();
+        int int_a[] = new int[a.length];
+        int int_b[] = new int[b.length];
+        for(int i=0;i<a.length;i++){
+            int_a[i] = (int)a[i];
+//            System.out.println(int_a[i]);
+        }
+        for(int i=0;i<b.length;i++){
+            int_b[i] = (int)b[i];
+//            System.out.println(int_b[i]);
+        }
+        int res_lcm = LCM(int_a, int_a.length);
+        int res_gcd = findGCD(int_b, int_b.length);
+        System.out.println(res_lcm);
+        System.out.println(res_gcd);
+        int count = 0;
+       for(int i=res_lcm;i<=res_gcd;i+=res_lcm ){
+           if(res_gcd % i == 0){
+               System.out.println("i = "+i);
+               count++;
+           }
+       }
+        System.out.println(count);
+    }
+}

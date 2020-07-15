@@ -1,0 +1,45 @@
+public class Solution {
+
+    // Complete the dayOfProgrammer function below.
+    static String dayOfProgrammer(int year) {
+        int jan = 31, feb = 0, mar = 31, apr = 30, may = 31, jun = 30, jul = 31;
+        int aug = 31, sep = 30, oct = 31, nov = 30, dec = 31;
+        int index_month  = 0;
+        int day = 0;
+        String res = null;
+
+        if(year == 1918){
+            feb = 15;
+        }else
+        if(year >= 1919){
+            if((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)){
+                feb = 29;
+            }else{
+                feb = 28;
+            }
+        }else{
+            if(year % 4 == 0) {
+                feb = 29;
+            }else{
+                feb = 28;
+            }
+        }
+
+        int month[] = {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec};
+
+        int sum_days = 0;
+        for (int i = 0; i < month.length; i++) {
+            sum_days += month[i];
+            index_month = i + 1;
+            if(sum_days>256){
+                sum_days -= month[i];
+                break;
+            }
+        }
+        day = 256 - sum_days;
+        res = day+".0"+index_month+"."+year;
+
+        return res;
+
+
+    }

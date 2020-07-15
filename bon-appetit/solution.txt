@@ -1,0 +1,14 @@
+static void bonAppetit(List<Integer> bill, int k, int b) {
+        int  sum = 0;
+        for (int i: bill){
+            if(i == bill.get(k))
+                continue;
+            sum += i;
+        }
+
+        if((sum/2) != b){
+            System.out.println(bill.get(k)/2);
+        }else{
+            System.out.println("Bon Appetit");
+        }
+    }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Project Euler.iml" filepath="$PROJECT_DIR$/.idea/Project Euler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Subsets_with_a_unique_sum/Subsets_with_a_unique_sum.iml" filepath="$PROJECT_DIR$/Subsets_with_a_unique_sum/Subsets_with_a_unique_sum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sum_Of_Digit_Factorial/Sum_Of_Digit_Factorial.iml" filepath="$PROJECT_DIR$/Sum_Of_Digit_Factorial/Sum_Of_Digit_Factorial.iml" />
+    </modules>
+  </component>
+</project>

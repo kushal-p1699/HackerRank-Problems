@@ -1,0 +1,35 @@
+   static String timeConversion(String s) {
+        /*
+         * Write your code here.
+         */
+
+        int hh = Integer.parseInt(s.substring(0,2));
+        String mm = s.substring(3, 5);
+        String ss = s.substring(6, 8);
+        String ampm = s.substring(8, 10);
+        String chh = "";
+
+        if(ampm.equals("PM")){
+             if(hh == 12){
+                hh = hh + 00;
+            }else{
+                 hh = hh + 12;
+            }
+            chh = String.valueOf(hh);
+        }else if(ampm.equals("AM")){
+            if(hh == 12){
+                chh = "00";
+            }else {
+                hh = hh + 00;
+                chh = String.valueOf(hh);
+                if(chh.length()== 1){
+                    chh = "0"+chh;
+                }
+            } 
+        }
+
+        String convertedTime = chh+":"+mm+":"+ss;
+        
+        return convertedTime;
+
+    }

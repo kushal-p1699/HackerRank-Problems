@@ -1,0 +1,16 @@
+ static int countingValleys(int n, String s) {
+        int count = 0;
+        int lvl = 0;
+
+        for(char c : s.toCharArray()){
+            if(c == 'U')
+                lvl += 1;
+            if(c == 'D')
+                lvl -= 1;
+            
+            if(c == 'U' && lvl == 0)
+                count++;
+            
+        }
+        return count;
+    }

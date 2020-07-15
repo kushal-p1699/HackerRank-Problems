@@ -1,0 +1,47 @@
+static int[] breakingRecords(int[] scores) {
+        int hs[] = new int[scores.length];
+        int ls[] = new int[scores.length];
+        int count = 0;
+        int MinCount = 0;
+
+        for(int i=0;i<scores.length;i++){
+           if(i == 0){
+               hs[i] = scores[i];
+           }else
+            if(scores[i] < hs[i-1]){
+                hs[i] = hs[i-1];   
+            }else{
+                hs[i] = scores[i];        
+            }
+        }
+
+        for(int i=0;i<scores.length;i++){
+           if(i == 0){
+               ls[i] = scores[i];
+           }else 
+            if(scores[i] > ls[i-1]){
+                ls[i] = ls[i-1];
+            }else{
+                ls[i] = scores[i];
+            }
+        }
+
+        for(int i=0;i<hs.length;i++){
+           if(i == 0){
+               count = 0;
+            }else if ( hs[i] != hs[i-1]){
+               count++;
+            }
+        }
+
+        for(int i=0;i<ls.length;i++){
+           if(i == 0){
+               MinCount = 0;
+           }else if ( ls[i] != ls[i-1]){
+               MinCount++;
+           }
+       }
+       
+       int res[] ={count, MinCount};
+       return res; 
+    }

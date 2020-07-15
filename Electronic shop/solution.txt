@@ -1,0 +1,23 @@
+bnm = input().split()
+b = int(bnm[0])
+n = int(bnm[1])
+m = int(bnm[2])
+keyboards = list(map(int, input().rstrip().split()))
+drives = list(map(int, input().rstrip().split()))
+sum = 0
+sumArray = []
+
+print(keyboards)
+print(drives)
+
+for i in range(n):
+    for j in range(m):
+        sum = keyboards[i] + drives[j]
+        if sum <= b:
+            sumArray.append(sum)
+        else:
+            sumArray.append(-1)
+        sum = 0
+sumArray.sort()
+print(sumArray)
+print(sumArray[len(sumArray)-1])
